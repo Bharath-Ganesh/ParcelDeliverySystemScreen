@@ -1,0 +1,21 @@
+.full{
+    background-image: url("../assets/background.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: opacity(0.9);
+} 
+
+.iconpos{
+    position: relative; 
+    top: -5px;
+    text-align: center;
+}
+
+.footertxtpos{
+    position: relative; 
+    bottom:-100px;
+    left: 520px;
+}
+

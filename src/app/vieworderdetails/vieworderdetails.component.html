@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="card centre">
+        <div class="card-header text-light" style="background-color: rgb(18,
+            61,5)">
+            <h2>ORDER DETAILS</h2>
+        </div>
+
+        <div>
+            <div class="card-body">
+
+                <select style="width: 100px;" class="form-control" id="statusId"
+                    [(ngModel)]="selectedStatus" (change)="fetchAllOrders()">
+                    <option [value]="status" *ngFor="let status of
+                        trackingStatus">
+                        {{status}}
+                    </option>
+
+                </select>
+
+                <div *ngIf="selectedStatus!=null">
+                    <br>
+
+                    <div *ngIf="orders.length!=0">
+
+                    <div>
+                        <h5>Following are the order details for tracking status
+                            {{selectedStatus}}</h5>
+                    </div>
+
+                    <br>
+
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Order id</th>
+                                <th>Weight</th>
+                                <th>Parcel type</th>
+                                <th>Pick up point</th>
+                                <th>Shipping address</th>
+                                <th>Order date</th>
+                                <th>Delivered date</th>
+                                <th>Delivery agent id</th>
+                                <th>Tracking id</th>
+                                <th *ngIf="selectedStatus=='SHIPPING'">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <td>{{order.orderId}}</td>
+                                <td>{{order.weight}}</td>
+                                <td>{{order.parcelType}}</td>
+                                <td>{{order.pickUpPoint}}</td>
+                                <td>{{order.shippingAddress}}</td>
+                                <td>{{order.orderDate}}</td>
+
+                                <td *ngIf="order.deliveredDate==null; else
+                                    DeliveryDate">NA</td>
+                                <ng-template #DeliveryDate>
+                                    {{order.deliveredDate}}
+                                </ng-template>
+
+                                <td *ngIf="order.agentId==null; else agentId">NA</td>
+                                <ng-template #agentId>
+                                    {{order.agentId}}
+                                </ng-template>
+
+                                <td *ngIf="order.trackingId==null; else
+                                    trackingId">NA</td>
+                                <ng-template #trackingId>
+                                    {{order.trackingId}}
+                                </ng-template>
+
+
+
+                                <td *ngIf="selectedStatus=='SHIPPING'"><button
+                                        class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenterTitle">Assign</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="orders.length==0">No orders for this status</div>
+            </div>
+
+           
+
+            </div>
+
+            <div *ngIf="errorMessage!=null">
+                <span class="error">{{errorMessage}}</span>
+            </div>
+            <div *ngIf="successMessage!=null">
+                <span class="text-primary">{{successMessage}}</span>
+            </div>
+
+            <div>
+
+
+            </div>
+
+
+        </div>
+
+        

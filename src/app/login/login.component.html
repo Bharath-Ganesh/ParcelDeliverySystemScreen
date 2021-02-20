@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card centre">
+        <div class="card-header text-light" style="background-color: rgb(18, 61,5)">
+            <h2>LOGIN</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form [formGroup]="loginForm" class="form" (ngSubmit)="login()">
+                <div class="form-group">
+                   
+                    <input type="text" class="form-control" placeholder="username"
+                        formControlName="username" id="username">
+                    <span class="error-message"
+                        *ngIf="!loginForm.controls.username.valid &&
+                        loginForm.controls.username.dirty">
+                        Username is required
+                    </span>
+                </div>
+
+                <br/>
+                <div class="form-group">
+                   
+                    <input type="password" class="form-control" placeholder="password"
+                        formControlName="password" id="password">
+                    <span class="error-message"
+                        *ngIf="!loginForm.controls.password.valid &&
+                        loginForm.controls.password.dirty">
+                        password is required
+                    </span>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <button class="btn btn-primary"
+                    type="submit"
+                    [disabled]=!loginForm.valid
+                    >
+                    Login
+                    </button>
+                </div>
+                
+
+            </form>
+
+            <div *ngIf="errorMessage!=null">
+                <span class="text-danger">{{errorMessage}}</span>
+            </div>
+            <div *ngIf="successMessage!=null">
+                <span class="text-primary">{{successMessage}}</span>
+            </div> 
+
+
+        </div>
+
+        <div class="card-footer">
+           <button class="btn" routerLink="/register">Not registered?Click here to register</button>
+          </div>
+
+
+    </div>
+  
+   
+</div>

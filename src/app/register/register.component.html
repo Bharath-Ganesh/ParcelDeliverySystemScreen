@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="card centre">
+        <div class="card-header text-light" style="background-color: rgb(18, 61,5)">
+            <h2>REGISTER</h2>
+        </div>
+
+        <div class="card-body">
+
+            <!-- Code the form here  -->
+            <form [formGroup]="registrationForm" class="form" (ngSubmit)="register()">
+
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" placeholder="username"
+                        formControlName="username" id="username">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.username.valid &&
+                        registrationForm.controls.username.dirty">
+                        Username is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                
+                    <input type="text" class="form-control" placeholder="name"
+                        formControlName="name" id="name">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.name.valid &&
+                        registrationForm.controls.name.dirty">
+                        Name is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                   
+                    <input type="text" class="form-control" placeholder="address"
+                        formControlName="address" id="address">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.address.valid &&
+                        registrationForm.controls.address.dirty">
+                        Address is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                   
+                    <input type="email" class="form-control" placeholder="emailId"
+                        formControlName="emailId" id="emailId">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.emailId.valid &&
+                        registrationForm.controls.emailId.dirty">
+                        emailId is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                   
+                    <input type="password" class="form-control" placeholder="password"
+                        formControlName="password" id="password">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.password.valid &&
+                        registrationForm.controls.password.dirty">
+                        password is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                  
+                    <input type="password" class="form-control" placeholder="confirmPassword"
+                        formControlName="confirmPassword"
+                        id="confirmPassword">
+                    <span class="error-message"
+                        *ngIf="!registrationForm.controls.confirmPassword.valid
+                        && registrationForm.controls.confirmPassword.dirty">
+                        password is required
+                    </span>
+                </div>
+
+                <br/>
+            
+
+                <div class="form-group">
+                    <button class="btn btn-primary"
+                    type="submit"
+                    [disabled]=!registrationForm.valid
+                    >
+                    Register
+                    </button>
+                </div>
+
+            </form>
+
+            <div *ngIf="errorMessage!=null">
+                <span class="error">{{errorMessage}}</span>
+            </div>
+            <div *ngIf="successMessage!=null">
+                <span class="text-primary">{{successMessage}}</span>
+            </div>
+
+
+        </div>
+    </div>
+  
+</div>

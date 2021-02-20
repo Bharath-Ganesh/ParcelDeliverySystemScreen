@@ -1,0 +1,124 @@
+<div class="container">
+    <div class="card centre">
+        <div class="card-header text-light" style="background-color: rgb(18, 61,5)">
+            <h2>Add a parcel</h2>
+        </div>
+
+        <br/>
+                <!-- Code the form here  -->
+                <form style="padding-inline: 10px;" [formGroup]="parcelCreationForm"  class="form" (ngSubmit)="createParcel()" >
+
+                    <div class="form-group">
+                      
+                        <input type="text" class="form-control" placeholder="Height of the parcel"
+                            formControlName="height" id="height">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.height.valid &&
+                            parcelCreationForm.controls.username.dirty">
+                            Height is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <input type="text" class="form-control"  placeholder="Weight of the parcel"
+                            formControlName="weight" id="weight">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.weight.valid &&
+                            parcelCreationForm.controls.weight.dirty">
+                            Weight is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                       
+                        <input type="text" class="form-control" placeholder="Width of the parcel"
+                            formControlName="width" id="width">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.width.valid &&
+                            parcelCreationForm.controls.width.dirty">
+                            Width is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                     
+                        <input type="text" class="form-control" placeholder="Length of the parcel"
+                            formControlName="length" id="length">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.length.valid &&
+                            parcelCreationForm.controls.length.dirty">
+                            Length is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                       
+                        <input type="text" class="form-control" placeholder="Type of parcel"
+                            formControlName="parcelType" id="parcelType">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.parcelType.valid &&
+                            parcelCreationForm.controls.parcelType.dirty">
+                            Type of parcel is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                       
+                        <input type="text" class="form-control"  placeholder="Pick up point"
+                            formControlName="pickUpPoint"
+                            id="pickUpPoint">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.pickUpPoint.valid
+                            && parcelCreationForm.controls.pickUpPoint.dirty">
+                            Pick up point is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                       
+                        <input type="text" class="form-control"  placeholder="Shipping address"
+                            formControlName="shippingAddress"
+                            id="shippingAddress">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.shippingAddress.valid
+                            && parcelCreationForm.controls.shippingAddress.dirty">
+                            Shipping address is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        
+                        <input type="text" class="form-control" placeholder="Total amount"
+                            formControlName="amount"
+                            id="amount">
+                        <span class="error-message"
+                            *ngIf="!parcelCreationForm.controls.amount.valid
+                            && parcelCreationForm.controls.amount.dirty">
+                            Amount is required
+                        </span>
+                    </div>
+
+                
+                    <br/>
+                
+
+                    <div class="form-group">
+                        <button class="btn btn-primary"
+                        type="submit"
+                        [disabled]=!parcelCreationForm.valid
+                        >
+                        Add Parcel
+                        </button>
+                    </div>
+
+                </form>
+                <div *ngIf="errorMessage!=null">
+                    <span class="error">{{errorMessage}}</span>
+                </div>
+                <div *ngIf="successMessage!=null">
+                    <span class="text-primary">{{successMessage}}</span>
+                </div>
+           
+    </div>
+</div>
